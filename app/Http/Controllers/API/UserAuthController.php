@@ -47,14 +47,10 @@ class UserAuthController extends BaseController
      */
     public function logout(Request $request)
     {
-        if (Auth::user()) {
-            $user = Auth::user();
-            $user->tokens()->where('id', $user->currentAccessToken()->id)->delete();
+        $user = Auth::user();
+        $user->tokens()->where('id', $user->currentAccessToken()->id)->delete();
 
-            return $this->sendResponse(null, 'You have been successfully logged out!');
-        } else {
-            return $this->sendError('Unauthorised.', ['error' => 'Unauthorised']);
-        }
+        return $this->sendResponse(null, 'You have been successfully logged out!');
     }
 
     public function changePassword(Request $request)
@@ -86,12 +82,8 @@ class UserAuthController extends BaseController
      */
     public function profile()
     {
-        if (Auth::user()) {
-            $user = Auth::user();
+        $user = Auth::user();
 
-            return $this->sendResponse($user, 'Success!');
-        } else {
-            return $this->sendError('Unauthorised.', ['error' => 'Unauthorised']);
-        }
+        return $this->sendResponse($user, 'Success!');
     }
 }
