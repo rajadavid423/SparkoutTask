@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\SaleRequest;
+use App\Jobs\NewSaleNotificationJob;
+use App\Mail\NewSaleMailNotification;
 use App\Models\Customer;
 use App\Models\Product;
 use App\Models\ProductCategory;
@@ -13,6 +15,7 @@ use Carbon\Carbon;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 use Yajra\DataTables\Facades\DataTables;
 
 class SaleController extends Controller
@@ -89,6 +92,8 @@ class SaleController extends Controller
                 $detail['sale_id'] = $sale->id;
                 SaleDetail::create($detail);
             }
+
+            dispatch(new NewSaleNotificationJob($sale->id));
 
             DB::commit();
             return redirect()->route("sale.index")->with("success", "Sale Created Successfully.");
