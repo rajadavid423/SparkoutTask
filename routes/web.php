@@ -7,6 +7,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductCategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\SaleController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -21,18 +22,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    if (auth()->user()) {
-        return redirect()->route('home');
-    }
-    return view('auth.login');
-});
-
 Auth::routes();
 
 Route::middleware('auth')->group(static function () {
+    Route::get('/', function () {
+            return redirect()->route('home');
+    });
     Route::get('home', [HomeController::class, 'index'])->name('home');
-    Route::get('home/total-account-balance', [HomeController::class, 'totalAccountBalance'])->name('totalAccountBalance');
     Route::get('logout', [LoginController::class, 'logout'])->name('logout');
     Route::get('change-password', [EmployeeController::class, 'changePassword'])->name('change-password');
     Route::post('password-update', [EmployeeController::class, 'passwordUpdate'])->name('password-update');
@@ -43,4 +39,6 @@ Route::middleware('auth')->group(static function () {
     Route::resource('employee', EmployeeController::class);
     Route::resource('product-category', ProductCategoryController::class)->except(['create', 'edit']);
     Route::resource('product', ProductController::class);
+    Route::resource('sale', SaleController::class);
+    Route::get('get-product-list/{category_id}', [ProductController::class, 'getProductList']);
 });

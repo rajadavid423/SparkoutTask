@@ -51,6 +51,8 @@ const BOOLEAN = [YES, NO];
 const  CASH = 'Cash';
 const  ONLINE = 'Online';
 
+const PAYMENT_MODE = [CASH, ONLINE];
+
 //Blood Groups
 const A1_P = 'a1_positive';
 const A1_N = 'a1_negative';

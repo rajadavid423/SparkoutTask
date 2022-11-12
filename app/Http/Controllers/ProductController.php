@@ -105,4 +105,12 @@ class ProductController extends Controller
             return response(['message' => 'Something went wrong!']);
         }
     }
+
+    public function getProductList($categoryId)
+    {
+        $products = Product::whereProductCategoryId($categoryId)->select('id', 'name', 'price')->get();
+
+        return response(['products' => $products]);
+    }
+
 }

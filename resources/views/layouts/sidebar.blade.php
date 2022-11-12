@@ -11,6 +11,13 @@
                 <img src="{{ url('images/dashboard (1)@2x.png') }}" class="mr-2" width="15px"/>Dashboard
             </a>
         </li>
+        @can('Sales')
+            <li class="nav-item nav_border_style p-2">
+                <a href="{{route('sale.index')}}" class="nav-link text-light " aria-selected="false">
+                    <img src="{{ url('images/icons8-bill-32.png') }}" class="mr-2" width="15px"/>Sales
+                </a>
+            </li>
+        @endcan
         @canany(['Create Customer', 'View Customer', 'Edit Customer', 'Delete Customer'])
         <li class="nav-item nav_border_style p-2">
             <a href="{{route('customer.index')}}" class="nav-link text-light" aria-selected="true">
@@ -39,13 +46,7 @@
             </a>
         </li>
         @endcan
-        @canany(['Create Sales Bill', 'View Sales Bill', 'Edit Sales Bill', 'Delete Sales Bill'])
-        <li class="nav-item nav_border_style p-2">
-            <a href="{{route('sale.index')}}" class="nav-link text-light " aria-selected="false">
-                <img src="{{ url('images/icons8-bill-32.png') }}" class="mr-2" width="15px"/>Sales Bill
-            </a>
-        </li>
-        @endcan
+
         @canany(['Leave Report', 'Permission Report', 'Call Details Report', 'Allotment Report', 'Sales Report', 'Service Report', 'Employee Report'])
         <li class="nav-item nav_border_style p-2">
             <a href="#" class="nav-link text-light" data-toggle="collapse"
