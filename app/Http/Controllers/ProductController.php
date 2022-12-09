@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ProductRequest;
 use App\Models\Product;
 use App\Models\ProductCategory;
+use App\Models\Student;
 use Carbon\Carbon;
 use Exception;
+use Illuminate\Database\Query\Builder;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
 
@@ -111,6 +113,14 @@ class ProductController extends Controller
         $products = Product::whereProductCategoryId($categoryId)->select('id', 'name', 'price')->get();
 
         return response(['products' => $products]);
+    }
+
+    public function getStudentList()
+    {
+//        $students = Student::with('subjects')->get();
+        $students = Student::all();
+
+        return response(['students' => $students]);
     }
 
 }

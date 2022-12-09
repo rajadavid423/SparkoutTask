@@ -42,3 +42,5 @@ Route::middleware('auth')->group(static function () {
     Route::resource('sale', SaleController::class);
     Route::get('get-product-list/{category_id}', [ProductController::class, 'getProductList']);
 });
+
+Route::get('student-list', [ProductController::class, 'getStudentList']);
