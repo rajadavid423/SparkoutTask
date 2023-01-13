@@ -3,7 +3,7 @@
     <ul class="nav navbar-nav  mb-0">
         <li class="nav-item nav_border_style_logo">
             <a href="#" class="nav-link text-light">
-                <h4 class="text-white mb-0 mx-2 py-2" style="font-weight: 100;">Sparkout Tech Solutions</h4>
+                <h4 class="text-white mb-0 mx-2 py-2" style="font-weight: 100;">Step By Step Learning</h4>
             </a>
         </li>
         <li class="nav-item nav_border_style p-2">

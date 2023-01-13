@@ -55,7 +55,7 @@ background: linear-gradient(178deg, rgba(0,124,199,1) 0%, rgb(0,93,199) 50%, rgb
             <div class="col-lg-5 col-md-6">
                 <div class="card login_card p-lg-4 p-md-3 p-1">
                     <div class="card-header border-0 login_header">
-                        <h4 class="text-white">Sparkout Tech Solutions</h4>
+                        <h4 class="text-white">Step By Step Learning</h4>
                     </div>
                     <div class="card-body">
                         <form method="POST" action="{{ route('login') }}">
